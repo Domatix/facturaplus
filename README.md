@@ -11,15 +11,23 @@ Importación de datos de Facturaplus a Odoo 10.
 ### Datos que se importarán a Odoo
 
 Los datos que importa el script **import_product** son los siguientes:
+#### Articulo.dbf
 * Nombre de producto
 * Tipo de producto
 
 Los datos que importa el script **import_factura** son los siguientes:
+#### FacCliT.dbf
 * Clientes de la factura (Nombre, dirección y NIF)
 * Cabecera de las facturas
 
 Los datos que importa el script **import_factura_linea** son los siguientes:
-* Líneas de la factura a la que pertenece
+#### FacCliL.dbf
+* Líneas de la factura a la que pertenece(Producto, descripción, precio unitario, subtotal, IVA, cantidad, descuento,origen)
+
+Los datos que importa el script **import_factura_iva** son los siguientes:
+#### Facclib.dbf
+* Creación de tablas de IVA 21% en las facturas correspondientes.
+
 
 ### Ejecución de scripts
 

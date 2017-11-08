@@ -54,3 +54,4 @@ Una vez guardados los cambios en los dos ficheros, los ejecutaremos en este orde
 * `python import_product.py`
 * `python import_factura.py`
 * `python import_factura_linea.py`
+* `python import_factura_iva.py`

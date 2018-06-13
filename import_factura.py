@@ -56,6 +56,8 @@ def importar():
         partner_id = partner_obj.browse([('name','=',row['CNOMCLI'].strip())])
         if partner_id:
             partner_id[0].ref = row['CCODCLI'].strip()
+            if not partner_id[0].customer:
+                partner_id[0].customer = True
             partner_id = partner_id[0].id
 
         # partner_id = partner_obj.search([('ref','=',row['CCODCLI'].strip())])
@@ -97,9 +99,10 @@ def importar():
 
         invoice_vals = {
             'name': str(row['NNUMFAC']),
-            'account_id': customerAccount.id,
+            # 'account_id': customerAccount.id,
             'partner_id': partner_id,
             'date_invoice':row['DFECFAC'].strftime("%Y-%m-%d"),
+            'type': 'out_invoice'
 
 
         }

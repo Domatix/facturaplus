@@ -54,7 +54,7 @@ def importar():
             }
 
             invoice_refund_id = invoice_obj.create(invoice_rect_vals)
-            invoice_id.write({'refund_invoice_id': invoice_refund_id.id})
+            invoice_id.write({'refund_invoice_ids': [(4,invoice_refund_id.id)]})
 
 
             invoice_ref_vals = {
@@ -65,28 +65,28 @@ def importar():
                 'discount': float(row['NDTO']),
                 'account_id':VentasAccount.id,
                 'invoice_line_tax_ids': [(4,iva21b.id)] if bool(float(row['NIVA'])) else False,
-                'price_unit':float(row['NPREUNIT']),
-                'price_subtotal':float(row['NTOTLINEA']),
+                'price_unit':abs(float(row['NPREUNIT'])),
+                'price_subtotal':abs(float(row['NTOTLINEA'])),
                 'origin': 'Rectificativa - ' + str(row['NNUMFAC']),
 
             }
 
             invoice_line_obj = origen.model('account.invoice.line')
             invoice_line_id = invoice_line_obj.create(invoice_ref_vals)
-
+            invoice_refund_id.compute_taxes()
             continue
 
 
 
         if invoice_id:
-            invoice_id = invoice_id[0].id
+            invoice_id = invoice_id[0]
 
         # CREACION DE LINEAS DE FACTURA
 
 
         invoice_vals = {
             'name': row['CDETALLE'].strip(),
-            'invoice_id': invoice_id,
+            'invoice_id': invoice_id.id,
             'product_id': product_id,
             'quantity': float(row['NCANENT']),
             'discount': float(row['NDTO']),
@@ -100,6 +100,7 @@ def importar():
 
         invoice_line_obj = origen.model('account.invoice.line')
         invoice_line_id = invoice_line_obj.create(invoice_vals)
+        invoice_id.compute_taxes()
 
 
 

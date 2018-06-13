@@ -1,6 +1,6 @@
 # Facturaplus
 
-Importación de datos de Facturaplus a Odoo 10.
+Importación de datos de Facturaplus a Odoo.
 
 ### Requisitos iniciales
 

@@ -22,13 +22,14 @@ def importar():
     dbf = ydbf.open(os.path.join('dbf', 'Articulo.dbf'), encoding='latin-1')
     for row in dbf:
 
-
         product = {
-            'name': row['CREF'],
+            'name': row['CDETALLE'],
+            'default_code': row['CREF'],
+            'lst_price': float(row['NPVP']),
             'type': 'product'
         }
 
-        product_obj = origen.model(name='product.template')
+        product_obj = origen.model(name='product.product')
         product = product_obj.create(product)
 
 

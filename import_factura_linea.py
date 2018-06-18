@@ -38,7 +38,8 @@ def importar():
                     'type': 'product'
                 }
                 product_id = product_obj.create(product)
-            product_id = product_id[0].id
+            else:
+                product_id = product_id[0].id
         # BÚSQUEDA DE CABECERAS DE FACTURAS
         invoice_obj = origen.model('account.invoice')
         invoice_id =  invoice_obj.browse([('name','=',str(row['NNUMFAC']))])

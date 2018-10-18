@@ -4,6 +4,7 @@ Importación de datos de Facturaplus a Odoo.
 
 ### Requisitos iniciales
 
+* Se ha utilizado Ubuntu 16.04 / 18.04 y python2 para ejecutar el script.
 * Instalar ydbf: [ydbf](https://github.com/y10h/ydbf/blob/master/setup.py)
 * Instalar erppeek: `pip install erppeek`
 * Crear una carpeta llamada **dbf** en el lugar donde se vayan a ejecutar los scripts y dejar dentro los .dbf de facturaplus
@@ -23,10 +24,6 @@ Los datos que importa el script **import_factura** son los siguientes:
 Los datos que importa el script **import_factura_linea** son los siguientes:
 #### FacCliL.dbf
 * Líneas de la factura a la que pertenece(Producto, descripción, precio unitario, subtotal, IVA, cantidad, descuento,origen)
-
-Los datos que importa el script **import_factura_iva** son los siguientes:
-#### Facclib.dbf
-* Creación de tablas de IVA 21% en las facturas correspondientes.
 
 
 ### Ejecución de scripts

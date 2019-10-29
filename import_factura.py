@@ -86,7 +86,6 @@ def importar():
                 'zip': row['CPTLCLI'].strip(),
                 'city': row['CPOBCLI'],
                 'country_id': country_id,
-                'facturaplus': True,
                 # 'company_id': company_id.id
 
             }
@@ -106,7 +105,6 @@ def importar():
                     'partner_id': partner_id,
                     'date_invoice': row['DFECFAC'].strftime("%Y-%m-%d"),
                     'type': 'out_refund',
-                    'facturaplus': True,
                     # 'company_id': company_id.id
             }
             invoice_obj.create(invoice_rect_vals)
@@ -119,7 +117,6 @@ def importar():
                 'partner_id': partner_id,
                 'date_invoice': row['DFECFAC'].strftime("%Y-%m-%d"),
                 'type': 'out_invoice',
-                'facturaplus': True,
                 # 'company_id': company_id.id
 
 
